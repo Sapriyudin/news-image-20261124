@@ -89,6 +89,14 @@ BRIEFS = [
     ("35", "BRASILIA", "Lula backs a second package to curb spending"),
     ("36", "WASHINGTON", "US blacklists Singapore cloud firm Megaspeed"),
     ("37", "SEOUL", "Korea pays $375,000 to catch AI exam cheats"),
+    ("38", "UNITED NATIONS", "Guterres wants AI risk rules within a year"),
+    ("39", "WASHINGTON", "SpaceX sued over Grok child-abuse images"),
+    ("40", "KATHMANDU", "Quake 5.6 strikes Nepal near the China border"),
+    ("41", "HANOI", "Blast kills 6, injures 10 in a food shop"),
+    ("42", "PARIS", "Officer to face murder trial over Nahel shooting"),
+    ("43", "PENNSYLVANIA", "Measles claims a ninth life in the state"),
+    ("44", "BEIJING", "China probes Politburo member Chen Jining"),
+    ("45", "MEXICO CITY", "Mexico to try 'Chapo Isidro' despite the US"),
 ]
 
 
@@ -249,12 +257,12 @@ def render():
             30), "No. 24 — 2026", font=F_SANS(16), fill=GREY)
     d.line([(mx, 66), (W - mx, 66)], fill=INK, width=3)
     d.text((mx, 74), "TUESDAY  24  NOVEMBER  2026", font=F_SANS_B(34), fill=RED)
-    d.text((W - mx - d.textlength("37 STORIES  ·  9 REGIONS", font=F_SANS_B(14)),
-            82), "37 STORIES  ·  9 REGIONS", font=F_SANS_B(14), fill=INK)
+    d.text((W - mx - d.textlength("45 STORIES  ·  9 REGIONS", font=F_SANS_B(14)),
+            82), "45 STORIES  ·  9 REGIONS", font=F_SANS_B(14), fill=INK)
     d.line([(mx, 112), (W - mx, 112)], fill=INK, width=2)
 
     # ---- Lead panel + markets box ----
-    ly, lh = 124, 176
+    ly, lh = 124, 164
     d.rectangle([mx, ly, W - mx, ly + lh], fill=LIGHT)
     d.rectangle([mx, ly, mx + 8, ly + lh], fill=RED)
     d.text((mx + 22, ly + 10), LEAD["kicker"], font=F_SANS_B(13), fill=RED)
@@ -273,7 +281,7 @@ def render():
            font=F_SANS_B(13), fill=INK)
 
     # ---- Illustrated grid: 3 cols x 4 rows ----
-    gy, gh = 312, 280
+    gy, gh = 300, 280
     cw = (W - 2 * mx - 16) // 3
     ch = (gh - 18) // 4
     for i, (num, region, head, sub, icon) in enumerate(CARDS):
@@ -296,18 +304,18 @@ def render():
     d.text((mx, by), "THE DAY IN BRIEF", font=F_SANS_B(15), fill=RED)
     d.line([(mx, by + 20), (W - mx, by + 20)], fill=INK, width=2)
     col_w = (W - 2 * mx - 20) // 2
-    per_col = 12
+    per_col = 16
     for i, (num, region, head) in enumerate(BRIEFS):
         col, row = divmod(i, per_col)
         x = mx + col * (col_w + 20)
-        y = by + 28 + row * 15
+        y = by + 28 + row * 14
         d.text((x, y), num, font=F_SANS_B(12), fill=RED)
         d.text((x + 26, y), region + " — " + head, font=F_SANS(12), fill=INK)
-    briefs_bottom = by + 28 + per_col * 15
+    briefs_bottom = by + 28 + per_col * 14
 
     # ---- World map ----
     my = briefs_bottom + 10
-    mh = 112
+    mh = 88
     d.text((mx, my), "WHERE IT HAPPENED — numbered stories on the map",
            font=F_SANS_B(13), fill=RED)
     draw_map(d, mx, my + 20, W - 2 * mx, mh - 20)
